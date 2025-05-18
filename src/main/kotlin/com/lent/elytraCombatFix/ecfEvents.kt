@@ -38,20 +38,20 @@ class ecfEvents(private val plugin: Main) : Listener {
             val chest = player.inventory.chestplate
             if (chest == null || chest.type == Material.AIR) {
                 e.isCancelled = true
-                player.sendMessage("${ChatColor.RED}You can't equip Elytra during combat.")
+                player.sendMessage("[${ChatColor.RED}!${ChatColor.GRAY}] You can't equip Elytra during combat.")
                 return
             }
         }
         if (e.slot == 38 && e.cursor.type == Material.ELYTRA) {
             e.isCancelled = true
-            player.sendMessage("${ChatColor.RED}You can't equip Elytra during combat.")
+            player.sendMessage("[${ChatColor.RED}!${ChatColor.GRAY}] You can't equip Elytra during combat.")
             return
         }
         if (e.click.isKeyboardClick && e.hotbarButton >= 0) {
             val hotbarItem = player.inventory.getItem(e.hotbarButton)
             if (e.slot == 38 && hotbarItem != null && hotbarItem.type == Material.ELYTRA) {
                 e.isCancelled = true
-                player.sendMessage("${ChatColor.RED}You can't equip Elytra during combat.")
+                player.sendMessage("[${ChatColor.RED}!${ChatColor.GRAY}] You can't equip Elytra during combat.")
             }
         }
     }
@@ -62,7 +62,7 @@ class ecfEvents(private val plugin: Main) : Listener {
         if (!isInCombat(player.uniqueId)) return
         if (e.rawSlots.contains(38) && e.oldCursor?.type == Material.ELYTRA) {
             e.isCancelled = true
-            player.sendMessage("${ChatColor.RED}You can't equip Elytra during combat.")
+            player.sendMessage("[${ChatColor.RED}!${ChatColor.GRAY}] You can't equip Elytra during combat.")
         }
     }
 
