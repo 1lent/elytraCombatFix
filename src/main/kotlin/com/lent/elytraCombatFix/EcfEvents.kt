@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerQuitEvent
 import java.util.HashMap
 import java.util.UUID
 
-class ecfEvents(private val plugin: Main) : Listener {
+class EcfEvents(private val plugin: Main) : Listener {
     private val combatTagged = HashMap<UUID, Long>()
 
     @EventHandler
