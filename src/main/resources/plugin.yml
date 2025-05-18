@@ -1,0 +1,4 @@
+name: elytraCombatFix
+version: '1.0'
+main: com.lent.elytraCombatFix.Main
+api-version: '1.20'
