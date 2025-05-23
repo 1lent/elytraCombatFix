@@ -7,7 +7,7 @@ class Main : JavaPlugin() {
 
     override fun onEnable() {
         saveDefaultConfig()
-        Bukkit.getPluginManager().registerEvents(ecfEvents(this), this)
+        Bukkit.getPluginManager().registerEvents(EcfEvents(this), this)
     }
 
 }

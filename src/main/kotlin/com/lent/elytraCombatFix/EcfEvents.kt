@@ -5,6 +5,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityToggleGlideEvent
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -17,10 +18,13 @@ class EcfEvents(private val plugin: Main) : Listener {
     private val combatTagged = HashMap<UUID, Long>()
 
     @EventHandler
-    fun onHit(e: EntityDamageEvent) {
+    fun onHit(e: EntityDamageByEntityEvent) {
         val player = e.entity as? Player ?: return
+        if (e.damager !is Player) return
+
         val uuid = player.uniqueId
         combatTagged.put(uuid, System.currentTimeMillis())
+
         if (player.isGliding) player.isGliding = false
         val chest = player.inventory.chestplate
         if (chest != null && chest.type == Material.ELYTRA) {
